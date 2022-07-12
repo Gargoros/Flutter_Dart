@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
             ElevatedButton(
-              onPressed: answerQuestion,
+              onPressed: () {},
               child: Text('Answer 2'),
               style: ElevatedButton.styleFrom(
                 primary: Colors.blue,
@@ -38,8 +38,18 @@ class MyApp extends StatelessWidget {
               ),
             ),
             ElevatedButton(
-              onPressed: answerQuestion,
+              onPressed: () => print('Answer 3!'),
               child: Text('Answer 3'),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+                onPrimary: Color.fromARGB(255, 208, 231, 237),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                print('Answer 4!');
+              },
+              child: Text('Answer 1'),
               style: ElevatedButton.styleFrom(
                 primary: Colors.blue,
                 onPrimary: Color.fromARGB(255, 208, 231, 237),
