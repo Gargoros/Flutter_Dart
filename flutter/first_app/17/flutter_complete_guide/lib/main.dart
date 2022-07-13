@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './question.dart';
+import './answer.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,9 +23,20 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     var questions = [
-      "Whaat's your favorite color?",
-      "What's your favorite animal?"
+      {
+        'questionText': "Whaat's your favorite color?",
+        'answer': ['Red', 'Blue', 'Green', 'White'],
+      },
+      {
+        'questionText': "What's your favorite animal?",
+        'answer': ['Puma', 'Cat', 'Dog', 'Rabbit'],
+      },
+      {
+        'questionText': "Who's your favorite instructor?",
+        'answer': ['Sam', 'Jim', 'Bob', 'Radius'],
+      },
     ];
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -32,41 +44,11 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Question(questions[_questionIndex]),
-            ElevatedButton(
-              onPressed: _answerQuestion,
-              child: Text('Answer 1'),
-              style: ElevatedButton.styleFrom(
-                primary: Colors.blue,
-                onPrimary: Color.fromARGB(255, 208, 231, 237),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {},
-              child: Text('Answer 2'),
-              style: ElevatedButton.styleFrom(
-                primary: Colors.blue,
-                onPrimary: Color.fromARGB(255, 208, 231, 237),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () => print('Answer 3!'),
-              child: Text('Answer 3'),
-              style: ElevatedButton.styleFrom(
-                primary: Colors.blue,
-                onPrimary: Color.fromARGB(255, 208, 231, 237),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                print('Answer 4!');
-              },
-              child: Text('Answer 1'),
-              style: ElevatedButton.styleFrom(
-                primary: Colors.blue,
-                onPrimary: Color.fromARGB(255, 208, 231, 237),
-              ),
-            ),
+            Question(questions[_questionIndex]['questionText']),
+            ...(questions[_questionIndex]['answer'] as List<String>)
+                .map((answer) {
+              return Answer(_answerQuestion, answer);
+            }).toList()
           ],
         ),
       ),
