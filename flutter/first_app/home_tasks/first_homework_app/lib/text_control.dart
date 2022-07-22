@@ -23,11 +23,7 @@ class _TextControlState extends State<TextControl> {
         ElevatedButton(
           onPressed: () {
             setState(() {
-              if (_countIndex < 1) {
-                _countIndex += 1;
-              } else {
-                _countIndex -= 1;
-              }
+              (_countIndex < 1) ? _countIndex += 1 : _countIndex -= 1;
             });
           },
           child: Text(_buttonText),
